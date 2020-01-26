@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         edtPassword.setOnEditorActionListener { v, actionId, event ->
-            if(v == edtPassword && EditorInfo.IME_ACTION_DONE == actionId){
+            if (v == edtPassword && EditorInfo.IME_ACTION_DONE == actionId) {
                 registerUser()
             }
             false
