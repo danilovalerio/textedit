@@ -80,12 +80,22 @@ class MainActivity : AppCompatActivity() {
         val name = edtName.text.toString()
         val email = edtEmail.text.toString()
         val password = edtPassword.text.toString()
-
         var isValid = true
+
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            edtEmail.error = getString(R.string.msg_error_email)
+            tilEmail.error = getString(R.string.msg_error_email)
             isValid = false
+        } else {
+            tilEmail.error = null
         }
+
+        if(password != "123"){
+            tilPassword.error = getString(R.string.msg_error_password)
+            isValid = false
+        } else {
+            tilPassword.error = null
+        }
+
         if (isValid) {
             Toast.makeText(
                 this,
