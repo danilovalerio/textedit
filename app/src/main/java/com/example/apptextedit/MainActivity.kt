@@ -1,12 +1,12 @@
 package com.example.apptextedit
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -49,13 +49,10 @@ class MainActivity : AppCompatActivity() {
                 //Os parâmetros before e count dizem o tamanho anterior
                 //e atual da String digitada, se count > before é
                 //porque está digitando, caso contrário, está apagando
-                if(count > before){
-                    if (str.length > 5){
-                        //se tem mas de 5 caracteres (sem máscaras) coloca o '.' e o '-'
-                        str = "${str.substring(0,2)}.${str.substring(2,5)}-${str.substring(5)}"
-                    } else if (str.length > 2) {
-                        //se tem mais de 2, coloca só o ponto
-                        str = "${str.substring(0,2)}.${str.substring(2)}"
+                if (count > before) {
+                    if (str.length > 5) {
+                        //se tem mas de 5 caracteres (sem máscaras) coloca o '-' hífen
+                        str = "${str.substring(0, 5)}-${str.substring(5)}"
                     }
                     //Seta a flag para evitar a chamada infinita
                     isUpdating = true
@@ -69,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                     //Se estiver apagando posiciona o cursor no local correto
                     //Isso trata a deleção dos caracteres da máscara
                     edtCep.setSelection((Math.max(0,
-                        Math.min(if(hasMask) start - before else start, str.length))))
+                            Math.min(if (hasMask) start - before else start, str.length))))
                 }
             }
         })
@@ -85,10 +82,10 @@ class MainActivity : AppCompatActivity() {
             edtEmail.error = getString(R.string.msg_error_email)
             isValid = false
         }
-        if(isValid){
+        if (isValid) {
             Toast.makeText(this,
-                getString(R.string.msg_success, name, email),
-                Toast.LENGTH_SHORT).show()
+                    getString(R.string.msg_success, name, email),
+                    Toast.LENGTH_SHORT).show()
         }
     }
 }
