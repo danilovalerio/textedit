@@ -65,14 +65,18 @@ class MainActivity : AppCompatActivity() {
                     edtCep.setText(str)
                     //Se estiver apagando posiciona o cursor no local correto
                     //Isso trata a deleção dos caracteres da máscara
-                    edtCep.setSelection((Math.max(0,
-                            Math.min(if (hasMask) start - before else start, str.length))))
+                    edtCep.setSelection(
+                        (Math.max(
+                            0,
+                            Math.min(if (hasMask) start - before else start, str.length)
+                        ))
+                    )
                 }
             }
         })
     }
 
-    fun registerUser() {
+    private fun registerUser() {
         val name = edtName.text.toString()
         val email = edtEmail.text.toString()
         val password = edtPassword.text.toString()
@@ -83,9 +87,11 @@ class MainActivity : AppCompatActivity() {
             isValid = false
         }
         if (isValid) {
-            Toast.makeText(this,
-                    getString(R.string.msg_success, name, email),
-                    Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                getString(R.string.msg_success, name, email),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }
