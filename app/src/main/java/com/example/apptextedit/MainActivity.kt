@@ -76,6 +76,8 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    //todo: Criar um campo telefone e adicionar máscara de telefone
+
     private fun registerUser() {
         val name = edtName.text.toString()
         val email = edtEmail.text.toString()
